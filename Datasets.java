@@ -20,15 +20,15 @@ class Dataset{
         double SumofSquare = 0.0;
         for (int i = 0; i < dataSize; i++){
             double diff = data[i] - mean;
-            SumofSquare = diff*diff;
-        }
+            SumofSquare += diff*diff;
+        }return Math.sqrt(SumofSquare/dataSize);
     }
     public static double calculateAverage(Dataset[] datasets){
         double total = 0.0;
-        for (Dataset ds: dataset){
+        for (Dataset ds: datasets){
             total+=ds.getaverage();
         }
-        return total/datasets.length();
+        return total/datasets.length;
     }
     @Override
     public String toString(){
@@ -59,5 +59,5 @@ public class Datasets{
        datasets[0]=ds1;
        datasets[1]=ds2;
        datasets[2]=ds3;
-       System.out.println("Average of Averages:"+Datasets.getaverage(datasets));
+       System.out.println("Average of Averages:"+Dataset.calculateAverage(datasets));
     }}
